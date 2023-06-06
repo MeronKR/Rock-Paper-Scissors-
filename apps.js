@@ -2,7 +2,7 @@ const option = ["rock", "paper", "scissor"]
 
 function getComputerChoice(){
     let choice = option[Math.floor(Math.random()*option.length)]
-    console.log(choice)
+    /* console.log(choice) */ /* Checking random computer variable */
     return choice;
 }
 
@@ -40,6 +40,39 @@ function playRound(playerSelection, computerSelection) {
     }   
 }
 
-const playerSelection = "paper";
+/* const playerSelection = "paper";
 const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection)); */ /* Game logic check */
+
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+    for (i = 0; i <5; i++){
+    let playerSelection = prompt("Rock, Paper, or Scissor?").toLowerCase();
+    let computerSelection = getComputerChoice()
+    console.log(playRound(playerSelection, computerSelection));
+    if (checkWinner(playerSelection, computerSelection) == "Player"){
+        playerScore ++;
+        console.log(`Player 1: ${playerScore}`)
+        console.log(`Computer: ${computerScore}`)
+    }
+    else if (checkWinner(playerSelection, computerSelection) == "Computer"){
+        computerScore ++;
+        console.log(`Player 1: ${playerScore}`)
+        console.log(`Computer: ${computerScore}`)
+    }
+}
+
+console.log("Game Over");
+
+    if (playerScore < computerScore){
+    console.log(`Computer wins with a score of ${computerScore} : ${playerScore}`);
+    }
+
+    else {
+        console.log(`Player wins with a score of ${playerScore} : ${computerScore}`);
+    }
+}
+
+
+game();
