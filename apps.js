@@ -2,10 +2,8 @@ const option = ["rock", "paper", "scissor"]
 
 function getComputerChoice(){
     let choice = option[Math.floor(Math.random()*option.length)]
-    /* console.log(choice) */ /* Checking random computer variable */
     return choice;
 }
-
 
 function checkWinner(playerSelection,computerSelection){
     if (playerSelection === computerSelection){
@@ -25,55 +23,130 @@ function checkWinner(playerSelection,computerSelection){
         }
 }   
 
+let roundCounter =1;
+let maxRound = 5
+
+let playerSelection = "";
+let computerSelection =""; 
+
+const playerInpRock = document.getElementById("rock");
+const playerInpPaper = document.getElementById("paper");
+const playerInpScissor = document.getElementById("scissor");
+const resultBox = document.querySelector(".logger");
+const playerLog = document.querySelector(".playerText")
+const computerLog = document.querySelector(".computerText")
+
+//Writing to page, assigning initial value + starting round + round counter
+function playerWrite(){
+    playerLog.textContent = `Player Chose: ${playerSelection.toUpperCase()}`;
+    }
+function computerWrite(){
+    computerLog.textContent = `Computer Chose: ${computerSelection.toUpperCase()}`;
+}
+
+    playerInpRock.addEventListener("click", function() {
+        if (roundCounter < 6){
+        playerSelection = playerInpRock.textContent.toLowerCase();
+        playerWrite()
+        computerSelection = getComputerChoice()
+        computerWrite()
+        playRound(playerSelection,computerSelection)
+        roundCounter += 1
+        }
+    });
+    
+playerInpPaper.addEventListener("click", function() {
+    if (roundCounter < 6){
+        playerSelection = playerInpPaper.textContent.toLowerCase();
+        playerWrite()
+        computerSelection = getComputerChoice()
+        computerWrite()
+        playRound(playerSelection,computerSelection)
+        roundCounter += 1
+    }
+    });
+    
+playerInpScissor.addEventListener("click", function() {
+    if (roundCounter < 6){
+        playerSelection = playerInpScissor.textContent.toLowerCase();
+        playerWrite()
+        computerSelection = getComputerChoice()
+        computerWrite()
+        playRound(playerSelection,computerSelection)
+        roundCounter += 1
+}
+    });
+
+    let playerScore=0;
+    let computerScore=0;
+
 function playRound(playerSelection, computerSelection) {
-    let result = checkWinner(playerSelection, computerSelection);
 
-    if (result ==="Tie"){
-        return "Tie! Play again!"
+    function updateScore (){
+        const liveScore = document.createElement("p");
+        liveScore.textContent = `Player ${playerScore} : ${computerScore} Computer `;
+        computerLog.appendChild(liveScore)
     }
 
-    else if (result == "Player"){
-        return `You win! ${playerSelection} beats ${computerSelection}`
+    const roundTie = document.createElement("p")
+    const roundWin = document.createElement("p");
+    const roundLoss = document.createElement("p");
+    
+    function gameT (){
+        const gameTie = document.createElement("p");
+        gameTie.textContent = `Player & Computer tie with a score of 
+        ${playerScore} : ${computerScore}`;
+        computerLog.appendChild(gameTie);
+
+    }
+    
+    function gameW (){
+        const gameWin = document.createElement("p");
+        gameWin.textContent =  `Player wins with a score of ${playerScore} : ${computerScore}`;
+        computerLog.appendChild(gameWin);
     }
 
-    else {
-        return `You lose! ${computerSelection} beats ${playerSelection}`
-    }   
-}
-
-/* const playerSelection = "paper";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection)); */ /* Game logic check */
-
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    for (i = 0; i <5; i++){
-    let computerSelection = getComputerChoice();
-    let playerSelection = prompt("Rock, Paper, or Scissor?").toLowerCase();
-    console.log(playRound(playerSelection, computerSelection));
-    if (checkWinner(playerSelection, computerSelection) == "Player"){
-        playerScore ++;
-        console.log(`Player 1: ${playerScore}`)
-        console.log(`Computer: ${computerScore}`)
+    function gameL (){
+        const gameLoss = document.createElement("p");
+        gameLoss.textContent = `Computer wins with a score of ${computerScore} : ${playerScore}`;
+        computerLog.appendChild(gameLoss);
     }
-    else if (checkWinner(playerSelection, computerSelection) == "Computer"){
-        computerScore ++;
-        console.log(`Player 1: ${playerScore}`)
-        console.log(`Computer: ${computerScore}`)
-    }
-}
+    
+    roundTie.textContent = `Round ${roundCounter} : Tie! Play again!`;
+    roundWin.textContent = `Round ${roundCounter} : You win! ${playerSelection} 
+    beats ${computerSelection}`;
+    roundLoss.textContent = `Round ${roundCounter} : You lose! ${computerSelection}
+    beats ${playerSelection}`;
+    
+    
 
-console.log("Game Over");
-
-    if (playerScore < computerScore){
-    console.log(`Computer wins with a score of ${computerScore} : ${playerScore}`);
-    }
-
-    else {
-        console.log(`Player wins with a score of ${playerScore} : ${computerScore}`);
-    }
-}
-
-
-game();
+    let result = checkWinner(playerSelection, computerSelection);      
+        if (result ==="Tie" ){
+            
+            computerLog.appendChild(roundTie);
+            updateScore()
+        }
+        else if (result == "Player"){
+            playerScore = ++playerScore
+            computerLog.appendChild(roundWin);
+            updateScore()
+            
+            playerScore;
+        }
+        else {
+            ++computerScore
+            computerLog.appendChild(roundLoss)
+            updateScore();
+        }
+        if (roundCounter == 5){
+            if (playerScore < computerScore){
+                gameL();
+                }
+                else if (playerScore > computerScore){
+                    gameW();
+                } 
+                else {
+                    gameT();
+                }
+            }
+        }
