@@ -1,9 +1,70 @@
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+body{
     background-image: url("https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=715&q=80");
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
+h1 {
+    padding: 20px;
+    margin: 20px 0;
+    width: auto;
+    height: 200px;
+    font-size: 56px;
+    font-weight: 800;
+}
+.resultsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.image{
+    max-width: 300px;
+    max-height: 300px;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.click {
+    width: 1020px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.buttons {
+    width: 1020px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    font-size: 20px;
+    background-color:azure;
+    width: 300px;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+.hover:hover{
+    border: 1px solid #FFD700;
+    transition: 0.5s;
+    transform: scale(1.35);
+}
+
+.glow:hover{
+    border: 1px solid #FFD700;
+    transition: 0.5s;
+    transform: scale(1.05);
+}

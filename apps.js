@@ -1,3 +1,4 @@
+
 const option = ["rock", "paper", "scissor"]
 
 function getComputerChoice(){
@@ -151,4 +152,27 @@ function playRound(playerSelection, computerSelection) {
             }
         }
 ;
+
+//hover 
+function addHover(){
+this.classList.add("hover")
+}
+
+const rockImg = document.querySelector(".rockImg")
+const paperImg = document.querySelector(".paperImg")
+const scissorImg = document.querySelector(".scissorImg")
+
+playerInpPaper.addEventListener("mouseenter", function(){
+    this.classList.add("hover")
+    paperImg.classList.add("glow")
+})
+
+playerInpRock.addEventListener("mouseenter", function(){
+    this.classList.add("hover")
+    rockImg.classList.add("glow")
+})
+playerInpScissor.addEventListener("mouseenter", function(){
+    this.classList.add("hover")
+    scissorImg.classList.add("glow")
+})
 
