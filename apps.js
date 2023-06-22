@@ -165,14 +165,29 @@ const scissorImg = document.querySelector(".scissorImg")
 playerInpPaper.addEventListener("mouseenter", function(){
     this.classList.add("hover")
     paperImg.classList.add("glow")
+    reset.classList.add("glow")
 })
 
 playerInpRock.addEventListener("mouseenter", function(){
     this.classList.add("hover")
     rockImg.classList.add("glow")
+    reset.classList.add("glow")
 })
 playerInpScissor.addEventListener("mouseenter", function(){
     this.classList.add("hover")
     scissorImg.classList.add("glow")
+    reset.classList.add("glow")
+})
+
+//reset 
+const gameContainer = document.querySelector(".resultsContainer")
+        const reset = document.createElement("button")
+        reset.textContent = "RESET"
+        reset.style.fontSize = "20px";
+        reset.style.backgroundColor ="#f6ecc4"
+        gameContainer.appendChild(reset);
+ 
+reset.addEventListener("click", function(){
+    location.reload()
 })
 

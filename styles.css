@@ -3,6 +3,7 @@ body{
     text-align: center;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 h1 {
@@ -25,6 +26,7 @@ h1 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-top: 5rem;
 }
 
 .image{
@@ -49,22 +51,28 @@ h1 {
     justify-content: space-between;
 }
 
-button {
+.buttons button {
     font-size: 20px;
-    background-color:azure;
+    background-color: #f6ecc4;   
     width: 300px;
     border-radius: 20px;
-    margin: 20px 0;
+    margin: 1rem 0
 }
 
 .hover:hover{
     border: 1px solid #FFD700;
-    transition: 0.5s;
+    transition: 0.2s;
     transform: scale(1.35);
 }
 
 .glow:hover{
     border: 1px solid #FFD700;
-    transition: 0.5s;
-    transform: scale(1.05);
+    transition: 0.2s;
+    transform: scale(1.3);
+}
+
+.logger {
+    margin: 5rem 0;
+    font-size: 26px;
+
 }
